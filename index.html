@@ -317,6 +317,56 @@ footer strong { color: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.01ms !important; }
 }
+
+/* Bloques nuevos: análisis, mercado y estrella de valor */
+.step { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--lata); font-weight: 600; margin: 0; }
+.takeaway { border-top: 1px solid var(--line); padding-top: 14px; font-weight: 600; color: var(--ink); font-size: 15.5px; }
+.types { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.types li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: start; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); }
+.types li b { font-family: var(--font-display); font-stretch: 118%; font-weight: 850; font-size: 26px; line-height: 1; color: var(--muted); opacity: .55; }
+.types li div { display: grid; gap: 2px; }
+.types li strong { font-size: 16px; }
+.types li span { font-size: 14px; color: var(--muted); }
+.types li.yes { background: var(--lata-soft); border-color: var(--lata); }
+.types li.yes b { color: var(--lata); opacity: 1; }
+.stats.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stat h3 { font-size: 17px; }
+.mk { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.mk-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.mk-card.wide { grid-column: 1 / -1; order: 4; }
+.mk-k { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.mk-big { font-family: var(--font-display); font-weight: 850; font-stretch: 118%; font-size: clamp(34px, 4vw, 46px); line-height: 1; color: var(--lata); font-variant-numeric: tabular-nums; }
+.mk-card p { font-size: 15px; }
+.mk-list { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 15px; }
+.gap { font-weight: 700; color: var(--cafe); }
+.share { display: flex; height: 46px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.share .seg { display: flex; align-items: center; padding: 0 14px; font-family: var(--font-mono); font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; transform-origin: 0 50%; }
+.share .gloria { background: var(--lata); color: var(--surface); }
+.share .rest { background: var(--paper); color: var(--muted); justify-content: center; }
+.verdict-line { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.2; max-width: 36ch; text-wrap: balance; }
+.band-h { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: clamp(22px, 2.8vw, 30px); line-height: 1.2; margin: 0; }
+.inno3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.star-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+.star-fig { margin: 0; min-width: 0; }
+.star-fig svg { width: 100%; height: auto; display: block; overflow: visible; }
+.star-center { font-family: var(--font-display); font-weight: 850; font-size: 34px; letter-spacing: .06em; fill: var(--paper); }
+.sl-t { font-family: var(--font-display); font-weight: 800; font-size: 31px; fill: var(--ink); }
+.sl-s { font-family: var(--font-body); font-size: 21px; fill: var(--muted); }
+.star-label.rac .sl-t { fill: var(--cafe); }
+.star-label.emo .sl-t { fill: var(--lata); }
+.dims { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.dims li { display: grid; gap: 4px; padding: 14px 16px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.dims li strong { font-size: 17px; }
+.dims li p { font-size: 15px; color: var(--muted); }
+.chip { justify-self: start; font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; padding: 3px 8px; border-radius: 999px; }
+.dims li.rac .chip { background: var(--cafe-soft); color: var(--cafe); }
+.dims li.emo .chip { background: var(--lata-soft); color: var(--lata); }
+.slogan-end { font-family: var(--font-display); font-stretch: 125%; font-weight: 850; font-size: clamp(26px, 4vw, 44px); line-height: 1.05; text-wrap: balance; }
+.slogan-end span { color: var(--lata); display: block; }
+@media (max-width: 900px) {
+  .mk, .inno3, .star-grid, .stats.three { grid-template-columns: minmax(0, 1fr); }
+  .mk-card.wide { order: 0; }
+}
 </style>
 </head>
 <body>
@@ -327,11 +377,12 @@ footer strong { color: var(--ink); }
   <div class="nav-in">
     <a class="brand" href="#inicio">Gloria <b>Shot</b></a>
     <ul>
-      <li><a class="l" href="#problema">Problema</a></li>
-      <li><a class="l" href="#diagnostico">Diagnóstico</a></li>
-      <li><a class="l" href="#propuesta">Propuesta</a></li>
-      <li><a class="l" href="#viabilidad">Viabilidad</a></li>
+      <li><a class="l" href="#analisis">Análisis</a></li>
       <li><a class="l" href="#mercado">Mercado</a></li>
+      <li><a class="l" href="#problema">Problema</a></li>
+      <li><a class="l" href="#propuesta">Propuesta</a></li>
+      <li><a class="l" href="#valor">Valor</a></li>
+      <li><a class="l" href="#viabilidad">Viabilidad</a></li>
       <li><a class="l" href="#referencias">Fuentes</a></li>
     </ul>
   </div>
@@ -345,9 +396,10 @@ footer strong { color: var(--ink); }
         <span class="w" aria-hidden="true"><span>Un</span></span> <span class="w" aria-hidden="true"><span>café,</span></span><br>
         <span class="w" aria-hidden="true"><span>un</span></span> <span class="w" aria-hidden="true"><span class="shot">shot.</span></span>
       </h1>
-      <p class="lead" data-hero>Gloria Shot es una monodosis de 15 ml de leche evaporada para quien toma su café solo, a S/ 0.50, colgada junto al sobre de café en la bodega.</p>
+      <p class="lead" data-hero>Analizamos la lata de Leche Gloria y proponemos Gloria Shot: una monodosis de 15 ml de leche evaporada para quien toma su café solo, a S/ 0.50, junto al sobre de café en la bodega.</p>
       <div class="cta-row" data-hero>
-        <a class="btn" href="#problema">Ver la propuesta</a>
+        <a class="btn" href="#analisis">Ver el análisis</a>
+        <a class="btn ghost" href="#propuesta">Ir a la propuesta</a>
       </div>
       <div class="byline" data-hero>
         <span>Por <strong>Sebastian Mamani</strong></span>
@@ -377,7 +429,6 @@ footer strong { color: var(--ink); }
           <path id="swirl" d="M203.0,184.0 L203.8,184.1 L204.3,184.3 L204.4,184.6 L204.1,184.8 L203.3,185.1 L202.0,185.3 L200.3,185.5 L198.1,185.6 L195.7,185.7 L193.2,185.6 L190.7,185.4 L188.3,185.1 L186.4,184.7 L185.0,184.2 L184.3,183.6 L184.5,182.9 L185.5,182.3 L187.4,181.7 L190.2,181.2 L193.8,180.7 L198.1,180.4 L202.8,180.3 L207.7,180.4 L212.7,180.6 L217.3,181.1 L221.4,181.7 L224.6,182.5 L226.8,183.4 L227.8,184.5 L227.3,185.5 L225.4,186.6 L222.1,187.6 L217.5,188.4 L211.8,189.1 L205.1,189.5 L197.8,189.7 L190.2,189.7 L182.7,189.3 L175.8,188.6 L169.7,187.7 L164.9,186.6 L161.6,185.2 L160.1,183.8 L160.6,182.3 L163.0,180.8 L167.4,179.4 L173.6,178.2 L181.4,177.2 L190.4,176.5 L200.2,176.2 L210.4,176.3 L220.5,176.7 L229.9,177.5 L238.2,178.7 L244.8,180.2 L249.5,181.9 L251.9,183.8 L251.8,185.7 L249.1,187.7 L243.9,189.5 L236.4,191.1 L226.8,192.4 L215.6,193.3 L203.3,193.8 L190.5,193.9 L177.7,193.4 L165.7,192.5 L155.0,191.1 L146.3,189.3 L139.9,187.2 L136.3,185.0 L135.8,182.6 L138.4,180.2 L144.1,177.9 L152.7,175.9 L163.8,174.2 L177.0,172.9 L191.7,172.2 L207.2,172.0 L222.6,172.4 L237.4,173.4 L250.6,175.0 L261.7,177.0 L270.0,179.4 L275.1,182.1 L276.6,184.9 L274.4,187.8 L268.5,190.5" fill="none" stroke="var(--milk)" stroke-width="2.6" stroke-linecap="round" opacity="0.85"></path>
         </g>
         <path id="stream" d="M214,124 C212,146 206,162 204,184" fill="none" stroke="var(--milk)" stroke-width="7" stroke-linecap="round"></path>
-        <path id="stream-edge" d="M214,124 C212,146 206,162 204,184" fill="none" stroke="var(--line)" stroke-width="9" stroke-linecap="round" opacity="0"></path>
         <g id="stick"><g transform="translate(214,122) rotate(38)">
           <rect x="-19" y="-150" width="38" height="150" rx="9" fill="var(--lata)"></rect>
           <path d="M-19,-138 L-14,-146 L-9,-138 L-4,-146 L1,-138 L6,-146 L11,-138 L16,-146 L19,-140" fill="none" stroke="var(--paper)" stroke-width="1.5" opacity=".7"></path>
@@ -393,11 +444,108 @@ footer strong { color: var(--ink); }
   <div class="scroll-hint" aria-hidden="true"><span>Desliza<i></i></span></div>
 </header>
 
+<section class="band" id="analisis">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Paso 2 de la actividad · Analiza</p>
+      <h2 data-split>Leche Gloria en lata de 390 g</h2>
+      <p class="lead">Cinco miradas al producto actual: niveles, tipo, atributos, ciclo de vida y problema.</p>
+    </div>
+
+    <div class="diag">
+      <div class="panel" data-reveal>
+        <p class="step">1 · Niveles del producto</p>
+        <div class="lv l3" id="lv3"><span class="tag">Aumentado</span><p>Llega a casi todas las bodegas gracias a su distribuidora (Deprodeca) y está en los recetarios de casa.</p>
+          <div class="lv l2" id="lv2"><span class="tag">Real</span><p>Lata de 390 g, marca Gloria, etiqueta azul (reconstituida) y morada (evaporada).</p>
+            <div class="lv l1" id="lv1"><span class="tag">Beneficio central</span><p>Nutrición y cremosidad para el café y el desayuno.</p></div>
+          </div>
+        </div>
+        <p class="takeaway">El beneficio central sigue vigente. La brecha está en el producto real: un formato pensado para la familia grande.</p>
+      </div>
+      <div class="panel" data-reveal>
+        <p class="step">2 · Tipo de producto</p>
+        <ul class="types" id="types">
+          <li class="yes"><b>Sí</b><div><strong>Conveniencia</strong><span>Compra frecuente y rutinaria, con poco esfuerzo. Así se compra Leche Gloria.</span></div></li>
+          <li><b>No</b><div><strong>Comparación</strong><span>Se comparan precio y calidad antes de comprar (ej. un televisor).</span></div></li>
+          <li><b>No</b><div><strong>Especialidad</strong><span>Marca única por la que se hace un esfuerzo especial (ej. un auto de lujo).</span></div></li>
+          <li><b>No</b><div><strong>No buscado</strong><span>El cliente no piensa en comprarlo (ej. un seguro).</span></div></li>
+        </ul>
+        <p class="takeaway">Se compra seguido, en la bodega y casi sin comparar: la marca decide.</p>
+      </div>
+    </div>
+
+    <div class="head">
+      <p class="step">3 · Atributos que la diferencian de la competencia</p>
+    </div>
+    <div class="stats three" data-stagger>
+      <div class="stat"><span class="big" data-count="77.8" data-suffix=" %">77.8 %</span><h3>Confianza</h3><p>del valor de la leche evaporada en el Perú es de Gloria (77.2 % en 2024).</p><span class="src">La República, 2026</span></div>
+      <div class="stat"><span class="big" data-count="99" data-suffix=" %">99 %</span><h3>Distribución</h3><p>de los puntos de venta del país alcanza la red del Grupo Gloria. Es la marca más vendida en bodegas y mercados.</p><span class="src">Moody's Local Perú, 2026 · Perú Retail, 2026</span></div>
+      <div class="stat"><span class="big">Sabor</span><h3>Tradición</h3><p>La cremosidad de siempre para el café con leche y la cocina de casa.</p><span class="src">Frente a Laive, Ideal (Nestlé) y marcas propias</span></div>
+    </div>
+
+    <div class="panel lifecycle" data-reveal>
+      <p class="step">4 · Ciclo de vida: madurez</p>
+      <div class="lc-wrap">
+        <svg id="lc" viewBox="0 0 640 240" role="img" aria-label="Curva del ciclo de vida con Leche Gloria en la etapa de madurez">
+          <rect id="lc-band" x="300" y="14" width="180" height="186" fill="var(--lata-soft)"></rect>
+          <line x1="40" y1="200" x2="620" y2="200" stroke="var(--line)" stroke-width="1.5"></line>
+          <line x1="150" y1="20" x2="150" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
+          <line x1="300" y1="20" x2="300" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
+          <line x1="480" y1="20" x2="480" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
+          <path id="lc-curve" d="M40,195 C110,192 140,170 180,130 S260,50 330,45 S450,40 490,70 S580,150 620,170" fill="none" stroke="var(--ink)" stroke-width="2.5"></path>
+          <g id="lc-mark">
+            <circle cx="421" cy="44" r="14" fill="none" stroke="var(--lata)" stroke-width="1.5" opacity="0.5"></circle>
+            <circle cx="421" cy="44" r="8" fill="var(--lata)"></circle>
+            <text x="421" y="80" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--lata)" font-weight="600">Leche Gloria</text>
+          </g>
+          <text class="lc-stage" x="95" y="224" text-anchor="middle">Introducción</text>
+          <text class="lc-stage" x="225" y="224" text-anchor="middle">Crecimiento</text>
+          <text class="lc-stage on" x="390" y="224" text-anchor="middle">Madurez</text>
+          <text class="lc-stage" x="550" y="224" text-anchor="middle">Declive</text>
+        </svg>
+        <ul class="evidence" data-stagger>
+          <li><strong>S/ 4,660 M</strong> vendió Gloria en 2025 (+9.6 %). Crece en soles.</li>
+          <li><strong>+7.3 %</strong> creció la evaporada, frente a +24.4 % de la leche UHT.</li>
+          <li><strong>−18 %</strong> de leche compra cada hogar frente a 2020 (de 106 a 87 L).</li>
+          <li><strong>2022</strong> La lata azul deja de llamarse «evaporada»: es leche reconstituida.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="mercado">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">4 · Ciclo de vida: el mercado</p>
+      <h2 data-split>¿El mercado está saturado?</h2>
+      <p class="lead">Sí. Es un mercado maduro y concentrado: vende más en soles, pero no en litros.</p>
+    </div>
+    <div class="mk" data-stagger>
+      <div class="mk-card"><span class="mk-k">Saturación</span><span class="mk-big" data-count="-18" data-suffix=" %">−18 %</span><p>de leche compra cada hogar frente a 2020. La frecuencia de compra bajó de 45 a 35 veces.</p><span class="src">Kantar, 2024</span></div>
+      <div class="mk-card"><span class="mk-k">Ventas</span><span class="mk-big">S/ 2,495 M</span><p>vendió Gloria en leche evaporada en 2025 (+7.3 %), el 53.5 % de sus ventas. Más soles, menos litros.</p><span class="src">La República, 2026</span></div>
+      <div class="mk-card wide">
+        <span class="mk-k">Competencia</span>
+        <div class="share" id="share" role="img" aria-label="Participación en valor: Gloria 77.8 %, resto 22.2 %">
+          <span class="seg gloria" style="width:77.8%">Gloria 77.8 %</span>
+          <span class="seg rest" style="width:22.2%">Resto</span>
+        </div>
+        <p>Laive, Ideal (Nestlé) y las marcas propias de los supermercados se reparten el resto. Gloria compite con confianza, presencia en bodegas y varias latas (Gloria, Bonlé, Pura Vida).</p>
+        <span class="src">La República, 2026 · Perú Retail, 2026</span>
+      </div>
+      <div class="mk-card"><span class="mk-k">Innovación</span>
+        <ul class="mk-list"><li>Zerolacto sin lactosa (2024)</li><li>Etiqueta morada (2022)</li><li>Leche UHT: +24.4 %</li></ul>
+        <p class="gap">Falta: la porción individual.</p><span class="src">Agraria.pe, 2024</span></div>
+    </div>
+    <p class="verdict-line" data-reveal>Para crecer en un mercado maduro no basta vender más latas: hay que innovar en formato.</p>
+  </div>
+</section>
+
 <section class="band story" id="problema">
   <div class="wrap">
     <div class="story-text">
       <div class="head">
-        <p class="eyebrow">El problema</p>
+        <p class="eyebrow">5 · El problema</p>
         <h2 data-split>Una lata se hizo para la familia grande.</h2>
         <p class="lead">Para una persona que toma un café al día, la lata abierta se malogra mucho antes de terminarse.</p>
       </div>
@@ -427,76 +575,19 @@ footer strong { color: var(--ink); }
   </div>
 </section>
 
-<section class="band" id="cifras" aria-label="Datos del mercado">
+<section class="band" id="cifras" aria-label="Datos del problema">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Por qué ahora</p>
+      <p class="eyebrow">El problema en cifras</p>
       <h2 data-split>Los hogares se achicaron y la lata no.</h2>
     </div>
     <div class="stats" data-stagger>
       <div class="stat"><span class="big" data-count="25" data-suffix=" %">25 %</span><p>del volumen de leche lo compran hogares de 1 o 2 personas. Antes era 21 %.</p><span class="src">Kantar, 2024</span></div>
-      <div class="stat"><span class="big" data-count="-18" data-suffix=" %">−18 %</span><p>de leche compra cada hogar frente a 2020: de 106 L a 87 L al año.</p><span class="src">Kantar, 2024</span></div>
       <div class="stat"><span class="big" data-count="2" data-suffix=" M+">2 M+</span><p>hogares unipersonales en el Perú, el 15.1 % del total.</p><span class="src">Gestión, s. f.</span></div>
+      <div class="stat"><span class="big" data-count="3" data-suffix=" días">3 días</span><p>tarda una lata abierta en tomar sabor a metal.</p><span class="src">La República, 2023</span></div>
       <div class="stat"><span class="big" data-count="95" data-suffix=" %">95 %</span><p>de los hogares compra café. El instantáneo es el 73 % de las ventas.</p><span class="src">Kantar, 2025</span></div>
     </div>
-  </div>
-</section>
-
-<section class="band" id="diagnostico">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Diagnóstico del producto actual</p>
-      <h2 data-split>Leche Gloria en lata de 390 g</h2>
-    </div>
-    <div class="diag">
-      <div class="panel" data-reveal>
-        <h3>Niveles del producto</h3>
-        <div class="lv l3" id="lv3"><span class="tag">Aumentado</span><p>Está en todas las bodegas gracias a su distribuidora (Deprodeca) y aparece en los recetarios de casa.</p>
-          <div class="lv l2" id="lv2"><span class="tag">Real</span><p>Lata de 390 g. Etiqueta azul (reconstituida) y morada (evaporada).</p>
-            <div class="lv l1" id="lv1"><span class="tag">Beneficio central</span><p>Nutrición y cremosidad para el café y el desayuno.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="panel" data-reveal>
-        <h3>Tipo, problema y atributos</h3>
-        <dl class="kv">
-          <div><dt>Tipo</dt><dd>Producto de conveniencia: compra rutinaria y de alta rotación.</dd></div>
-          <div><dt>Problema</dt><dd>No resuelve el consumo individual, al paso y sin desperdicio.</dd></div>
-        </dl>
-        <ol class="attrs">
-          <li><span><strong>Confianza:</strong> tiene el 77.8 % de las leches evaporadas.</span></li>
-          <li><span><strong>Distribución:</strong> llega a casi cualquier bodega del país.</span></li>
-          <li><span><strong>Sabor:</strong> la cremosidad que el consumidor ya conoce.</span></li>
-        </ol>
-      </div>
-      <div class="panel lifecycle" data-reveal>
-        <h3>Ciclo de vida: madurez</h3>
-        <div class="lc-wrap">
-          <svg id="lc" viewBox="0 0 640 240" role="img" aria-label="Curva del ciclo de vida con Leche Gloria en la etapa de madurez">
-            <rect id="lc-band" x="300" y="14" width="180" height="186" fill="var(--lata-soft)"></rect>
-            <line x1="40" y1="200" x2="620" y2="200" stroke="var(--line)" stroke-width="1.5"></line>
-            <line x1="150" y1="20" x2="150" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
-            <line x1="300" y1="20" x2="300" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
-            <line x1="480" y1="20" x2="480" y2="200" stroke="var(--line)" stroke-dasharray="4 4"></line>
-            <path id="lc-curve" d="M40,195 C110,192 140,170 180,130 S260,50 330,45 S450,40 490,70 S580,150 620,170" fill="none" stroke="var(--ink)" stroke-width="2.5"></path>
-            <g id="lc-mark">
-              <circle cx="421" cy="44" r="14" fill="none" stroke="var(--lata)" stroke-width="1.5" opacity="0.5"></circle>
-              <circle cx="421" cy="44" r="8" fill="var(--lata)"></circle>
-              <text x="421" y="80" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="var(--lata)" font-weight="600">Leche Gloria</text>
-            </g>
-            <text class="lc-stage" x="95" y="224" text-anchor="middle">Introducción</text>
-            <text class="lc-stage" x="225" y="224" text-anchor="middle">Crecimiento</text>
-            <text class="lc-stage on" x="390" y="224" text-anchor="middle">Madurez</text>
-            <text class="lc-stage" x="550" y="224" text-anchor="middle">Declive</text>
-          </svg>
-          <ul class="evidence" data-stagger>
-            <li><strong>S/ 4,660 M</strong> vendió Gloria en 2025 (+9.6 %). La evaporada creció 7.3 %; la leche UHT, 24.4 %.</li>
-            <li><strong>−18 %</strong> de leche compra cada hogar frente a 2020. Las ventas suben por precio, no por más litros.</li>
-            <li><strong>2022</strong> La lata azul deja de llamarse «evaporada» y pasa a ser leche reconstituida.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <p class="verdict-line" data-reveal>La necesidad que no resuelve: el consumo individual, al paso y sin desperdicio.</p>
   </div>
 </section>
 
@@ -504,7 +595,7 @@ footer strong { color: var(--ink); }
   <div class="wrap">
     <div class="prop-grid">
       <div class="head">
-        <p class="eyebrow">La innovación</p>
+        <p class="eyebrow">Paso 3 de la actividad · Propón</p>
         <h2><span class="w"><span>Gloria</span></span> <span class="w"><span class="shot">Shot</span></span></h2>
         <p class="lead">Una porción de leche evaporada para un solo café. Se abre, se sirve y no sobra nada.</p>
       </div>
@@ -525,9 +616,14 @@ footer strong { color: var(--ink); }
       <div><dt>Precio</dt><dd>S/ 0.50<small>Se paga solo cuando hay café</small></dd></div>
       <div><dt>Dónde</dt><dd>Al paso<small>Bodegas, cafeterías y oficinas</small></dd></div>
     </dl>
-    <div class="inno" data-stagger>
-      <div><b>Tipo de innovación</b><p>Disruptiva según la definición del curso, de formato y canal. Cambia <strong>qué</strong> se vende (una porción en lugar de una lata) y <strong>cómo</strong> se vende (por unidad, donde se toma el café).</p></div>
-      <div><b>A quién apunta</b><p>Personas que viven solas o en pareja, estudiantes y oficinas: quien hoy no compra la lata porque se le malogra.</p></div>
+    <div class="head">
+      <p class="eyebrow">¿Incremental o disruptiva?</p>
+      <p class="band-h">Disruptiva, según la definición del curso: cambia qué y cómo se vende.</p>
+    </div>
+    <div class="inno inno3" data-stagger>
+      <div><b>Cambia qué se vende</b><p>Una porción de 15 ml en lugar de una lata de 390 g.</p></div>
+      <div><b>Cambia cómo se vende</b><p>Por unidad y donde se toma el café: bodegas, cafeterías y oficinas.</p></div>
+      <div><b>Más que una mejora</b><p>No mejora la lata: crea un formato y un canal nuevos con el mismo producto base.</p></div>
     </div>
     <div class="marquee" aria-hidden="true">
       <div class="marquee-track">
@@ -538,10 +634,39 @@ footer strong { color: var(--ink); }
   </div>
 </section>
 
+<section class="band" id="valor">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Estrella de valor · Robinette (2017, como se citó en Ravichagua Vitor, 2026)</p>
+      <h2 data-split>¿Qué valor le da Gloria Shot al cliente?</h2>
+    </div>
+    <div class="star-grid">
+      <figure class="star-fig">
+        <svg id="star" viewBox="0 0 760 540" role="img" aria-label="Estrella de valor de Gloria Shot con cinco dimensiones">
+          <path id="star-shape" d="M380,110 L421.1,223.4 L541.7,227.5 L446.6,301.6 L479.9,417.5 L380,350 L280.1,417.5 L313.4,301.6 L218.3,227.5 L338.9,223.4 Z" fill="var(--lata)"></path>
+          <text x="380" y="290" text-anchor="middle" class="star-center">VALOR</text>
+          <g class="star-label emo"><text x="380" y="62" text-anchor="middle" class="sl-t">Equidad</text><text x="380" y="86" text-anchor="middle" class="sl-s">la confianza de Gloria</text></g>
+          <g class="star-label emo"><text x="562" y="214" text-anchor="start" class="sl-t">Experiencia</text><text x="562" y="238" text-anchor="start" class="sl-s">el café de siempre</text></g>
+          <g class="star-label emo"><text x="494" y="458" text-anchor="start" class="sl-t">Energía</text><text x="494" y="482" text-anchor="start" class="sl-s">se sirve al paso</text></g>
+          <g class="star-label rac"><text x="266" y="458" text-anchor="end" class="sl-t">Precio</text><text x="266" y="482" text-anchor="end" class="sl-s">pagas solo lo que usas</text></g>
+          <g class="star-label rac"><text x="198" y="214" text-anchor="end" class="sl-t">Producto</text><text x="198" y="238" text-anchor="end" class="sl-s">UHT, sin azúcar ni frío</text></g>
+        </svg>
+      </figure>
+      <ul class="dims" data-stagger>
+        <li class="rac"><span class="chip">Racional</span><strong>Producto o servicio</strong><p>Leche evaporada UHT de 15 ml, sin azúcar, sin frío ni abrelatas.</p></li>
+        <li class="rac"><span class="chip">Racional</span><strong>Dinero o precio</strong><p>S/ 0.50 por unidad: pagas solo lo que usas y no botas leche.</p></li>
+        <li class="emo"><span class="chip">Emocional</span><strong>Energía</strong><p>Ahorra tiempo y esfuerzo: se abre y se sirve al paso, junto al sobre de café.</p></li>
+        <li class="emo"><span class="chip">Emocional</span><strong>Experiencia</strong><p>El café con leche de siempre, sin el sabor a metal de la lata abierta.</p></li>
+        <li class="emo"><span class="chip">Emocional</span><strong>Equidad</strong><p>La confianza de Gloria, la marca peruana líder.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="band" id="viabilidad">
   <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Competencia</p>
+      <p class="eyebrow">¿Es viable?</p>
       <h2 data-split>¿Y la leche condensada?</h2>
       <p class="lead">Ya existe en doypack de 90 g, pero es otra ocasión de consumo: trae azúcar y octógono, y además es de la propia Gloria. El sustituto real es la lata abierta.</p>
     </div>
@@ -566,8 +691,8 @@ footer strong { color: var(--ink); }
     </div>
 
     <div class="head">
-      <p class="eyebrow">Viabilidad</p>
-      <h2 data-split>Limitaciones y cómo resolverlas</h2>
+      <p class="eyebrow">Limitaciones</p>
+      <h2 data-split>Cómo resolverlas</h2>
     </div>
     <div class="table-scroll" data-reveal>
       <table>
@@ -581,13 +706,9 @@ footer strong { color: var(--ink); }
         </tbody>
       </table>
     </div>
-  </div>
-</section>
 
-<section class="band" id="mercado">
-  <div class="wrap">
     <div class="head">
-      <p class="eyebrow">Tamaño de mercado</p>
+      <p class="eyebrow">Mercado alcanzable</p>
       <h2>S/ <span data-count="239">239</span> millones al año solo en Lima</h2>
       <p class="lead">Barras a escala. Los supuestos van en cursiva y deben validarse con el piloto.</p>
     </div>
@@ -609,6 +730,7 @@ footer strong { color: var(--ink); }
       <li><span class="fill"></span><h3>Bodegas</h3><p>Tiras colgadas junto al sobre de café, a S/ 0.50 la unidad, con la red de distribución que Gloria ya tiene.</p></li>
       <li><span class="fill"></span><h3>Familia de shots</h3><p>Si el formato funciona, se extiende a otras variedades de la marca.</p></li>
     </ol>
+    <p class="slogan-end" data-reveal>Un café, un shot, cero desperdicio. <span>¡Vota por Gloria Shot!</span></p>
   </div>
 </section>
 
@@ -622,7 +744,8 @@ footer strong { color: var(--ink); }
       <details><summary>¿No es más caro que la lata?</summary><div class="ans"><p>Por gramo sí: una porción sacada de la lata cuesta unos S/ 0.16. Pero con la lata se bota lo que se malogra, y el shot se paga solo cuando se toma el café.</p></div></details>
       <details><summary>¿Y el plástico?</summary><div class="ans"><p>Empezaría en sachet o stick laminado, con menos material que un envase rígido. Además, evita botar leche.</p></div></details>
       <details><summary>¿Le quita ventas a la lata?</summary><div class="ans"><p>Apunta a quien hoy no compra lata: hogares de una o dos personas, estudiantes y oficinas. Eso se mediría en el piloto.</p></div></details>
-      <details><summary>¿Es disruptiva o incremental?</summary><div class="ans"><p>Disruptiva según la definición del curso: cambia qué se vende (una porción) y cómo se vende (por unidad, donde se toma el café).</p></div></details>
+      <details><summary>¿Es disruptiva o incremental?</summary><div class="ans"><p>Disruptiva según la definición del curso: cambia qué se vende (una porción) y cómo se vende (por unidad, donde se toma el café). El producto base, la leche evaporada Gloria, se mantiene.</p></div></details>
+      <details><summary>¿Por qué no compite con la condensada?</summary><div class="ans"><p>Es otra ocasión de consumo: la condensada se usa en postres o café dulce y trae azúcar y octógono. Gloria Shot es leche sin azúcar para el café diario.</p></div></details>
     </div>
   </div>
 </section>
@@ -635,9 +758,11 @@ footer strong { color: var(--ink); }
     </div>
     <ul class="refs">
       <li>Asociación Peruana de Empresas de Inteligencia de Mercados. (2025). <i>Niveles socioeconómicos 2025</i>. <a href="https://apeim.com.pe/wp-content/uploads/2025/12/Informe-completo-de-NSE-2025.pdf">https://apeim.com.pe/wp-content/uploads/2025/12/Informe-completo-de-NSE-2025.pdf</a></li>
+      <li>¿Cuál es la marca más vendida en las bodegas y mercados del Perú? Descúbrelo aquí. (2026, 9 de marzo). <i>Perú Retail</i>. <a href="https://www.peru-retail.com/que-marcas-lideran-las-ventas-en-el-canal-tradicional-de-peru-este-ranking-lo-revela/">https://www.peru-retail.com/que-marcas-lideran-las-ventas-en-el-canal-tradicional-de-peru-este-ranking-lo-revela/</a></li>
       <li>El café alcanzó ventas por S/ 918 millones en 2025 y café instantáneo lidera ventas. (2026, 2 de febrero). <i>Diario El Pueblo</i>. <a href="https://diarioelpueblo.com.pe/2026/02/02/el-cafe-alcanzo-ventas-por-s-918-millones-en-2025-y-cafe-instantaneo-lidera-ventas/">https://diarioelpueblo.com.pe/2026/02/02/el-cafe-alcanzo-ventas-por-s-918-millones-en-2025-y-cafe-instantaneo-lidera-ventas/</a></li>
       <li>El Corte Inglés. (s. f.). <i>Ideal Kondensmilch, 10 porciones de 7.5 g</i> [Ficha de producto]. Recuperado el 25 de noviembre de 2026, de <a href="https://www.elcorteingles.es/supermarkt/B001020615800099-ideal-kondensmilch-10er-pack-karton-75-g/">https://www.elcorteingles.es/supermarkt/B001020615800099-ideal-kondensmilch-10er-pack-karton-75-g/</a></li>
       <li>Evaporated milk: A battle of price, size and choice. (2020, 20 de agosto). <i>Nairametrics</i>. <a href="https://nairametrics.com/2020/08/20/evaporated-milk-a-battle-of-prize-size-and-choice">https://nairametrics.com/2020/08/20/evaporated-milk-a-battle-of-prize-size-and-choice</a></li>
+      <li>Gloria amplía portafolio con lanzamiento de leche, yogures y quesos. (2024, 4 de mayo). <i>Agraria.pe</i>. <a href="https://agraria.pe/noticias/gloria-amplia-portafolio-con-lanzamiento-de-leche-yogures-y--35896">https://agraria.pe/noticias/gloria-amplia-portafolio-con-lanzamiento-de-leche-yogures-y--35896</a></li>
       <li>Gloria lanza leche evaporada entera de etiqueta morada ante cambio de reglamento. (s. f.). <i>Peru Retail</i>. <a href="https://www.peru-retail.com/gloria-lanza-leche-evaporada-entera-de-etiqueta-morada-ante-cambio-de-reglamento/">https://www.peru-retail.com/gloria-lanza-leche-evaporada-entera-de-etiqueta-morada-ante-cambio-de-reglamento/</a></li>
       <li>Hogares unipersonales en Perú superan los 2 millones: quiénes viven solos y dónde están. (s. f.). <i>Gestión</i>. <a href="https://gestion.pe/peru/hogares-unipersonales-en-peru-superan-los-2-millones-quienes-viven-solos-y-donde-estan-noticia/">https://gestion.pe/peru/hogares-unipersonales-en-peru-superan-los-2-millones-quienes-viven-solos-y-donde-estan-noticia/</a></li>
       <li>Kantar. (2024). <i>Hogares peruanos reducen el consumo de leche</i>. <a href="https://www.kantar.com/latin-america/Inspiracion/Consumidor/2024-WP-Hogares-peruanos-reducen-el-consumo-de-leche">https://www.kantar.com/latin-america/Inspiracion/Consumidor/2024-WP-Hogares-peruanos-reducen-el-consumo-de-leche</a></li>
@@ -649,6 +774,7 @@ footer strong { color: var(--ink); }
       <li>Leche Gloria amplía portafolio lácteo con nueva presentación de leche lista para beber. (2021). <i>Revista Economía</i>. <a href="https://www.revistaeconomia.com/leche-gloria-amplia-portafolio-lacteo-con-nueva-presentacion-de-leche-lista-para-beber/">https://www.revistaeconomia.com/leche-gloria-amplia-portafolio-lacteo-con-nueva-presentacion-de-leche-lista-para-beber/</a></li>
       <li>Leche Gloria: ¿cuál es el nuevo nombre del tarro de etiqueta azul? (2022, 21 de octubre). <i>La República</i>. <a href="https://larepublica.pe/economia/2022/10/21/leche-gloria-cual-es-el-nuevo-nombre-del-tarro-de-etiqueta-azul-reconstituida">https://larepublica.pe/economia/2022/10/21/leche-gloria-cual-es-el-nuevo-nombre-del-tarro-de-etiqueta-azul-reconstituida</a></li>
       <li>Leche Gloria: del yogurt a la leche condensada, empresa duplica inversiones. (s. f.). <i>La República</i>. <a href="https://www.larepublica.co/globoeconomia/leche-gloria-del-yogurt-a-la-leche-condensada-empresa-duplica-inversiones-que-ejecuto-4354964">https://www.larepublica.co/globoeconomia/leche-gloria-del-yogurt-a-la-leche-condensada-empresa-duplica-inversiones-que-ejecuto-4354964</a></li>
+      <li>Moody's Local Perú. (2026, 28 de octubre). <i>Leche Gloria S.A.</i> [Informe de clasificación de riesgo]. <a href="https://moodyslocal.com.pe/wp-content/uploads/2026/10/MLPE_Informe-PUBLICO-Leche-Gloria-28102026.pdf">https://moodyslocal.com.pe/wp-content/uploads/2026/10/MLPE_Informe-PUBLICO-Leche-Gloria-28102026.pdf</a></li>
       <li>Plaza Vea. (s. f.). <i>Leche condensada Gloria doypack 90 g</i> [Ficha de producto]. Recuperado el 25 de noviembre de 2026, de <a href="https://www.plazavea.com.pe/leche-condensada-gloria-doypack-90g/p">https://www.plazavea.com.pe/leche-condensada-gloria-doypack-90g/p</a></li>
       <li>¿Por qué no debes guardar el tarro de leche dentro de la refrigeradora? (2023, 19 de abril). <i>La República</i>. <a href="https://larepublica.pe/datos-lr/respuestas/2023/04/19/por-que-no-debes-guardar-el-tarro-de-leche-dentro-de-la-refrigeradora-leche-en-lata-leche-evaporada-forma-correcta-de-guardar-la-leche-evat-lfhc-400843">https://larepublica.pe/datos-lr/respuestas/2023/04/19/por-que-no-debes-guardar-el-tarro-de-leche-dentro-de-la-refrigeradora-leche-en-lata-leche-evaporada-forma-correcta-de-guardar-la-leche-evat-lfhc-400843</a></li>
       <li>Ravichagua Vitor, A. (2026). <i>Investigación de Mercado y Marketing: estrategia de producto y desarrollo de nuevos productos</i> [Diapositivas de PowerPoint]. Universidad Nacional Mayor de San Marcos.</li>
@@ -807,6 +933,18 @@ footer strong { color: var(--ink); }
     /* Fases: la línea avanza con el scroll */
     gsap.from('#phases .fill', { scaleX: 0, stagger: 0.35, ease: 'none', scrollTrigger: { trigger: '#phases', start: 'top 85%', end: 'bottom 55%', scrub: 0.6 } });
     gsap.from('#phases li > *:not(.fill)', { y: 20, opacity: 0, stagger: 0.08, duration: 0.6, clearProps: CLEAR, scrollTrigger: { trigger: '#phases', start: 'top 85%', once: true } });
+
+    /* Barra de participación de mercado */
+    gsap.from('#share .seg', { scaleX: 0, duration: 1.2, stagger: 0.25, ease: 'power2.out', scrollTrigger: { trigger: '#share', start: 'top 88%', once: true } });
+
+    /* Tipos de producto: el "Sí" se destaca al final */
+    gsap.from('#types li', { x: -24, opacity: 0, duration: 0.6, stagger: 0.12, clearProps: CLEAR, scrollTrigger: { trigger: '#types', start: 'top 85%', once: true } });
+
+    /* Estrella de valor: la estrella gira y crece; las etiquetas aparecen una por una */
+    gsap.timeline({ scrollTrigger: { trigger: '#star', start: 'top 80%', once: true } })
+      .from('#star-shape', { scale: 0, rotation: -72, svgOrigin: '380 280', duration: 1.1, ease: 'back.out(1.6)' })
+      .from('#star .star-center', { opacity: 0, duration: 0.4 }, '-=0.3')
+      .from('#star .star-label', { opacity: 0, y: 12, duration: 0.5, stagger: 0.15 }, '-=0.2');
 
     /* FAQ: apertura suave */
     var faqHandlers = [];
