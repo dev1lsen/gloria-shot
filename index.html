@@ -363,9 +363,47 @@ footer strong { color: var(--ink); }
 .dims li.emo .chip { background: var(--lata-soft); color: var(--lata); }
 .slogan-end { font-family: var(--font-display); font-stretch: 125%; font-weight: 850; font-size: clamp(26px, 4vw, 44px); line-height: 1.05; text-wrap: balance; }
 .slogan-end span { color: var(--lata); display: block; }
+/* Propuesta incremental y comparación */
+.inc-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr); gap: clamp(24px, 4vw, 48px); align-items: center; }
+.inc-body { display: grid; gap: 18px; min-width: 0; }
+.inc-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.inc-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.inc-card .k { font-family: var(--font-display); font-weight: 850; font-stretch: 118%; font-size: clamp(22px, 2.6vw, 28px); line-height: 1.05; color: var(--lata); }
+.inc-card p { font-size: 14.5px; color: var(--muted); }
+.inc-card .tag { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); font-weight: 600; padding-top: 6px; border-top: 1px solid var(--line); margin-top: auto; }
+.limit-box { background: var(--cafe-soft); border: 1.5px solid var(--cafe); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px; }
+.limit-box b { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--cafe); }
+.limit-box p { font-size: 15.5px; font-weight: 600; color: var(--ink); }
+.inc-fig { margin: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: grid; min-width: 0; }
+.inc-fig .img-box { background: #F1F6F3; display: grid; place-items: center; }
+.inc-fig img { width: 100%; height: auto; display: block; }
+.inc-fig figcaption { padding: 12px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); text-align: center; }
+
+.cmp-table th.col-us { background: var(--lata-soft); color: var(--lata); }
+.cmp-table td.col-us { background: color-mix(in srgb, var(--lata-soft) 55%, var(--surface)); font-weight: 600; color: var(--ink); }
+.cmp-table td.crit { font-family: var(--font-mono); font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.cmp-table td.bad { color: var(--cafe); font-weight: 600; }
+.cmp-table td.good { color: var(--ok); font-weight: 700; }
+.decision { background: var(--lata-soft); border: 1.5px solid var(--lata); border-radius: 14px; padding: 22px 24px; display: grid; gap: 8px; }
+.decision .chip { background: var(--lata); color: var(--surface); }
+.decision strong { font-family: var(--font-display); font-stretch: 112%; font-weight: 800; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.2; color: var(--ink); }
+.decision p { font-size: 15.5px; color: var(--muted); max-width: 64ch; }
+
 @media (max-width: 900px) {
-  .mk, .inno3, .star-grid, .stats.three { grid-template-columns: minmax(0, 1fr); }
+  .mk, .inno3, .star-grid, .stats.three, .inc-grid, .inc-cards { grid-template-columns: minmax(0, 1fr); }
   .mk-card.wide { order: 0; }
+}
+@media (max-width: 680px) {
+  .cmp-wrap { overflow: visible; border: 0; background: transparent; }
+  .cmp-table { min-width: 0; display: block; }
+  .cmp-table thead { display: none; }
+  .cmp-table tbody { display: grid; gap: 12px; }
+  .cmp-table tr { display: grid; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+  .cmp-table td { display: grid; gap: 4px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+  .cmp-table td:last-child { border-bottom: 0; }
+  .cmp-table td.crit { background: var(--paper); white-space: normal; }
+  .cmp-table td[data-label]::before { content: attr(data-label); font-family: var(--font-mono); font-size: 11px; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .cmp-table td.col-us[data-label]::before { color: var(--lata); }
 }
 </style>
 </head>
@@ -380,7 +418,8 @@ footer strong { color: var(--ink); }
       <li><a class="l" href="#analisis">Análisis</a></li>
       <li><a class="l" href="#mercado">Mercado</a></li>
       <li><a class="l" href="#problema">Problema</a></li>
-      <li><a class="l" href="#propuesta">Propuesta</a></li>
+      <li><a class="l" href="#incremental">Propuestas</a></li>
+      <li><a class="l" href="#comparacion">Comparación</a></li>
       <li><a class="l" href="#valor">Valor</a></li>
       <li><a class="l" href="#viabilidad">Viabilidad</a></li>
       <li><a class="l" href="#referencias">Fuentes</a></li>
@@ -399,7 +438,7 @@ footer strong { color: var(--ink); }
       <p class="lead" data-hero>Analizamos la lata de Leche Gloria y proponemos Gloria Shot: una monodosis de 15 ml de leche evaporada para quien toma su café solo, a S/ 0.50, junto al sobre de café en la bodega.</p>
       <div class="cta-row" data-hero>
         <a class="btn" href="#analisis">Ver el análisis</a>
-        <a class="btn ghost" href="#propuesta">Ir a la propuesta</a>
+        <a class="btn ghost" href="#incremental">Ver las propuestas</a>
       </div>
       <div class="byline" data-hero>
         <span>Por <strong>Sebastian Mamani</strong></span>
@@ -591,11 +630,53 @@ footer strong { color: var(--ink); }
   </div>
 </section>
 
+<section class="band" id="incremental">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Paso 3 de la actividad · Propuesta incremental</p>
+      <h2 data-split>La mejora: Gloria con pico</h2>
+      <p class="lead">Una opción incremental mejora lo que ya existe: la misma lata de 390 g, ahora con pico dosificador y tapa resellable.</p>
+    </div>
+    <div class="inc-grid">
+      <div class="inc-body">
+        <div class="inc-cards" data-stagger>
+          <div class="inc-card">
+            <span class="k">Pico</span>
+            <p>Tapa dosificadora: se sirve sin chorrear y sin necesidad de abrelatas.</p>
+            <span class="tag">Más cómodo</span>
+          </div>
+          <div class="inc-card">
+            <span class="k">Tapa resellable</span>
+            <p>Se cierra entre usos y se guarda mejor dentro de la refrigeradora.</p>
+            <span class="tag">Más higiénico</span>
+          </div>
+          <div class="inc-card">
+            <span class="k">390 g</span>
+            <p>La misma lata, el mismo canal de venta y una inversión baja para Gloria.</p>
+            <span class="tag">Bajo riesgo</span>
+          </div>
+        </div>
+        <div class="limit-box" data-reveal>
+          <b>El límite de esta mejora</b>
+          <p>Mejora lo que ya existe, pero no resuelve el problema: una persona sola sigue abriendo 26 porciones y bota la mayor parte.</p>
+          <span class="src">Innovación incremental: una mejora sobre lo que ya existe (Ravichagua Vitor, 2026)</span>
+        </div>
+      </div>
+      <figure class="inc-fig" data-reveal>
+        <div class="img-box">
+          <img src="img/lata-pico.png" alt="Ilustración de la propuesta incremental: lata de Leche Gloria de 390 g con tapa resellable y pico dosificador" width="1200" height="1544" loading="lazy">
+        </div>
+        <figcaption>Gloria con pico · misma lata de 390 g, nueva tapa</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="band pitch-band" id="propuesta">
   <div class="wrap">
     <div class="prop-grid">
       <div class="head">
-        <p class="eyebrow">Paso 3 de la actividad · Propón</p>
+        <p class="eyebrow">Paso 3 de la actividad · Propuesta disruptiva</p>
         <h2><span class="w"><span>Gloria</span></span> <span class="w"><span class="shot">Shot</span></span></h2>
         <p class="lead">Una porción de leche evaporada para un solo café. Se abre, se sirve y no sobra nada.</p>
       </div>
@@ -617,7 +698,7 @@ footer strong { color: var(--ink); }
       <div><dt>Dónde</dt><dd>Al paso<small>Bodegas, cafeterías y oficinas</small></dd></div>
     </dl>
     <div class="head">
-      <p class="eyebrow">¿Incremental o disruptiva?</p>
+      <p class="eyebrow">¿Por qué es disruptiva?</p>
       <p class="band-h">Disruptiva, según la definición del curso: cambia qué y cómo se vende.</p>
     </div>
     <div class="inno inno3" data-stagger>
@@ -630,6 +711,54 @@ footer strong { color: var(--ink); }
         <span>Un café, un shot, <em>cero desperdicio.</em></span><span>Un café, un shot, <em>cero desperdicio.</em></span><span>Un café, un shot, <em>cero desperdicio.</em></span>
         <span>Un café, un shot, <em>cero desperdicio.</em></span><span>Un café, un shot, <em>cero desperdicio.</em></span><span>Un café, un shot, <em>cero desperdicio.</em></span>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="comparacion">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Paso 3 de la actividad · Comparación</p>
+      <h2 data-split>Incremental frente a disruptiva</h2>
+      <p class="lead">Cuatro criterios para comparar Gloria con pico frente a Gloria Shot y decidir qué propuesta llevar al mercado.</p>
+    </div>
+    <div class="table-scroll cmp-wrap" data-reveal>
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>Criterio</th>
+            <th>Gloria con pico (incremental)</th>
+            <th class="col-us">Gloria Shot (disruptiva)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="crit">1 · Qué cambia</td>
+            <td data-label="Gloria con pico (incremental)">Solo la tapa de la lata de 390 g.</td>
+            <td class="col-us" data-label="Gloria Shot (disruptiva)">La porción (15 ml) y dónde se vende.</td>
+          </tr>
+          <tr>
+            <td class="crit">2 · Desperdicio</td>
+            <td class="bad" data-label="Gloria con pico (incremental)">Se sigue botando la mayor parte de la lata.</td>
+            <td class="col-us good" data-label="Gloria Shot (disruptiva)">Cero desperdicio: se abre y se usa en un café.</td>
+          </tr>
+          <tr>
+            <td class="crit">3 · Clientes y canal</td>
+            <td data-label="Gloria con pico (incremental)">Los mismos hogares y el mismo canal actual.</td>
+            <td class="col-us" data-label="Gloria Shot (disruptiva)">Hogares de 1 o 2 personas, oficinas y cafeterías.</td>
+          </tr>
+          <tr>
+            <td class="crit">4 · Inversión y riesgo</td>
+            <td data-label="Gloria con pico (incremental)">Baja inversión y bajo riesgo.</td>
+            <td class="col-us" data-label="Gloria Shot (disruptiva)">Media, validada con piloto B2B y la planta UHT que ya existe.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="decision" data-reveal>
+      <span class="chip">Propuesta elegida</span>
+      <strong>Elegimos Gloria Shot</strong>
+      <p>La lata con pico es más barata de lanzar, pero deja intacto el desperdicio. Gloria Shot es la única propuesta que resuelve el consumo individual sin desperdicio y abre clientes nuevos en una categoría madura.</p>
     </div>
   </div>
 </section>
@@ -744,7 +873,7 @@ footer strong { color: var(--ink); }
       <details><summary>¿No es más caro que la lata?</summary><div class="ans"><p>Por gramo sí: una porción sacada de la lata cuesta unos S/ 0.16. Pero con la lata se bota lo que se malogra, y el shot se paga solo cuando se toma el café.</p></div></details>
       <details><summary>¿Y el plástico?</summary><div class="ans"><p>Empezaría en sachet o stick laminado, con menos material que un envase rígido. Además, evita botar leche.</p></div></details>
       <details><summary>¿Le quita ventas a la lata?</summary><div class="ans"><p>Apunta a quien hoy no compra lata: hogares de una o dos personas, estudiantes y oficinas. Eso se mediría en el piloto.</p></div></details>
-      <details><summary>¿Es disruptiva o incremental?</summary><div class="ans"><p>Disruptiva según la definición del curso: cambia qué se vende (una porción) y cómo se vende (por unidad, donde se toma el café). El producto base, la leche evaporada Gloria, se mantiene.</p></div></details>
+      <details><summary>¿Es disruptiva o incremental?</summary><div class="ans"><p>Gloria Shot es disruptiva según la definición del curso: cambia qué se vende (una porción) y cómo se vende (por unidad, donde se toma el café). Por contraste, la propuesta incremental (Gloria con pico) solo añade una tapa resellable a la lata de 390 g sin eliminar el desperdicio.</p></div></details>
       <details><summary>¿Por qué no compite con la condensada?</summary><div class="ans"><p>Es otra ocasión de consumo: la condensada se usa en postres o café dulce y trae azúcar y octógono. Gloria Shot es leche sin azúcar para el café diario.</p></div></details>
     </div>
   </div>
