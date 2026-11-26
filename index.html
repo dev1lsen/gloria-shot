@@ -286,21 +286,6 @@ tr.us td:first-child { font-weight: 600; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq .ans { padding: 0 0 20px; color: var(--muted); max-width: var(--measure); }
 
-/* Guion */
-.script { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: clamp(20px, 3vw, 34px); display: grid; gap: 20px; max-width: 880px; }
-.script-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
-.script-tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
-.timer { font-family: var(--font-mono); font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.ptrack { height: 4px; background: var(--line); border-radius: 2px; overflow: hidden; }
-.ptrack span { display: block; height: 100%; width: 0; background: var(--lata); }
-.script ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
-.script li { display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 14px; font-size: 19px; line-height: 1.5; padding: 10px 12px; border-radius: 10px; transition: background-color .3s, color .3s, opacity .3s; }
-.script li .t { font-family: var(--font-mono); font-size: 12.5px; color: var(--lata); padding-top: 5px; font-variant-numeric: tabular-nums; }
-.script li:last-child p { font-weight: 600; }
-.script.practicing li { opacity: .38; }
-.script.practicing li.on { opacity: 1; background: var(--lata-soft); }
-.copied { font-size: 13px; color: var(--ok); }
-
 /* Referencias */
 .refs { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; max-width: 900px; }
 .refs li { padding-left: 36px; text-indent: -36px; font-size: 15px; line-height: 1.55; overflow-wrap: anywhere; }
@@ -327,7 +312,6 @@ footer strong { color: var(--ink); }
   .mrow .calc { grid-column: 1 / 3; margin-top: -10px; }
   .pb { grid-template-columns: minmax(0, 1fr) 60px; }
   .pb .track { grid-column: 1 / 3; grid-row: 2; }
-  .script li { grid-template-columns: minmax(0, 1fr); gap: 2px; font-size: 17px; }
   .brand { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -348,7 +332,6 @@ footer strong { color: var(--ink); }
       <li><a class="l" href="#propuesta">Propuesta</a></li>
       <li><a class="l" href="#viabilidad">Viabilidad</a></li>
       <li><a class="l" href="#mercado">Mercado</a></li>
-      <li><a class="l" href="#pitch">Pitch</a></li>
       <li><a class="l" href="#referencias">Fuentes</a></li>
     </ul>
   </div>
@@ -365,7 +348,6 @@ footer strong { color: var(--ink); }
       <p class="lead" data-hero>Gloria Shot es una monodosis de 15 ml de leche evaporada para quien toma su café solo, a S/ 0.50, colgada junto al sobre de café en la bodega.</p>
       <div class="cta-row" data-hero>
         <a class="btn" href="#problema">Ver la propuesta</a>
-        <a class="btn ghost" href="#pitch">Ir al pitch</a>
       </div>
       <div class="byline" data-hero>
         <span>Por <strong>Sebastian Mamani</strong></span>
@@ -645,35 +627,6 @@ footer strong { color: var(--ink); }
   </div>
 </section>
 
-<section class="band" id="pitch">
-  <div class="wrap">
-    <div class="head">
-      <p class="eyebrow">Pitch de un minuto</p>
-      <h2 data-split>El guion</h2>
-      <p class="lead">Pulsa «Practicar» y lee la línea resaltada al ritmo del cronómetro.</p>
-    </div>
-    <div class="script" id="script-box" data-reveal>
-      <div class="script-head">
-        <span class="timer" id="timer">0:00 / 0:56</span>
-        <span class="script-tools">
-          <span class="copied" id="copied" hidden>Copiado</span>
-          <button class="btn ghost" id="copy" type="button">Copiar guion</button>
-          <button class="btn" id="practice" type="button">Practicar</button>
-        </span>
-      </div>
-      <div class="ptrack" aria-hidden="true"><span id="ptrack"></span></div>
-      <ol id="script">
-        <li data-t="0"><span class="t">0:00</span><p>¿Cuántas veces abriste una lata de Gloria para un solo café… y el resto terminó en la basura?</p></li>
-        <li data-t="6"><span class="t">0:06</span><p>La lata está hecha para la familia grande. Pero hoy, uno de cada cuatro litros de leche lo compran hogares de una o dos personas. Y una lata abierta sabe a metal en tres días.</p></li>
-        <li data-t="18"><span class="t">0:18</span><p>Gloria es líder, con el 78 % de las evaporadas, pero está en madurez: los hogares compran 18 % menos leche que en 2020.</p></li>
-        <li data-t="27"><span class="t">0:27</span><p>Por eso propongo Gloria Shot: una monodosis de leche evaporada para tu café, a cincuenta céntimos, colgada junto al sobre de café en la bodega y en la cafetería de la universidad. Un café, un shot.</p></li>
-        <li data-t="42"><span class="t">0:42</span><p>En Europa ya funciona; en el Perú, no existe. Gloria ya tiene la planta y las bodegas.</p></li>
-        <li data-t="50"><span class="t">0:50</span><p>Un café, un shot, cero desperdicio. ¡Voten por Gloria Shot!</p></li>
-      </ol>
-    </div>
-  </div>
-</section>
-
 <section class="band" id="referencias">
   <div class="wrap">
     <div class="head">
@@ -718,42 +671,6 @@ footer strong { color: var(--ink); }
 <script>
 /* ---------- Funciones que no dependen de GSAP ---------- */
 (function () {
-  // Copiar guion
-  var btn = document.getElementById('copy'), ok = document.getElementById('copied');
-  btn.addEventListener('click', function () {
-    var text = Array.prototype.map.call(document.querySelectorAll('#script li p'), function (p) { return p.textContent; }).join('\n\n');
-    function done() { ok.textContent = 'Copiado'; ok.hidden = false; setTimeout(function () { ok.hidden = true; }, 2000); }
-    function fallback() {
-      var r = document.createRange(); r.selectNodeContents(document.getElementById('script'));
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      ok.textContent = 'Texto seleccionado: usa Ctrl+C'; ok.hidden = false;
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
-  });
-
-  // Modo práctica (teleprompter de 56 s)
-  var TOTAL = 56, box = document.getElementById('script-box'), lines = document.querySelectorAll('#script li'),
-      timer = document.getElementById('timer'), bar = document.getElementById('ptrack'), pb = document.getElementById('practice'),
-      raf = null, t0 = 0;
-  function fmt(s) { s = Math.max(0, Math.floor(s)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
-  function stop() {
-    cancelAnimationFrame(raf); raf = null; box.classList.remove('practicing'); pb.textContent = 'Practicar';
-    lines.forEach(function (l) { l.classList.remove('on'); });
-  }
-  function tick(now) {
-    var t = (now - t0) / 1000;
-    timer.textContent = fmt(t) + ' / ' + fmt(TOTAL);
-    bar.style.width = Math.min(100, t / TOTAL * 100) + '%';
-    var idx = 0; lines.forEach(function (l, i) { if (t >= +l.dataset.t) idx = i; });
-    lines.forEach(function (l, i) { l.classList.toggle('on', i === idx); });
-    if (t >= TOTAL) { stop(); timer.textContent = fmt(TOTAL) + ' / ' + fmt(TOTAL) + ' · ¡Listo!'; return; }
-    raf = requestAnimationFrame(tick);
-  }
-  pb.addEventListener('click', function () {
-    if (raf) { stop(); return; }
-    box.classList.add('practicing'); pb.textContent = 'Detener'; t0 = performance.now(); raf = requestAnimationFrame(tick);
-  });
-
   // Barra de progreso de lectura y sección activa en la navegación
   var prog = document.getElementById('progress');
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav a.l'));
